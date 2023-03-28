@@ -1,0 +1,29 @@
+$encabezadosHeader: #ffbaba;
+// $darkmode: true;
+
+@mixin header__shadow($shadowColor) {
+  box-shadow: 0px 5px 5px $shadowColor;
+}
+
+@function darkStyle($color) {
+  @if (lightness($color) > 70) {
+      @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+header {
+  nav {
+    ul {
+      background-color: #0000004c;
+      li {
+        color: darkStyle($encabezadosHeader);
+        @include header__shadow(#000);
+        padding: 2rem;
+        margin: 2rem;
+        list-style: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+header nav ul {
+  background-color: rgba(0, 0, 0, 0.2980392157);
+}
+header nav ul li {
+  color: #333;
+  box-shadow: 0px 5px 5px #000;
+  padding: 2rem;
+  margin: 2rem;
+  list-style: none;
+}
+
+body {
+  background-color: #ffbaba;
+}
+
+/*# sourceMappingURL=style.css.map */
