@@ -1,0 +1,116 @@
+@color1: blue;
+@color2: white;
+@colorFondoZapato: #160b0b;
+@colorFuenteZapato: #ddff00;
+@size1: 24px;
+
+body {
+  background-color: @color1;
+}
+
+h1 {
+  color: @color2;
+  size: @size1;
+}
+
+h3 {
+  border: 3px solid white;
+}
+
+section {
+  background-color: white;
+  padding: 10px;
+}
+
+footer {
+  border: 3px solid blue;
+  margin: 20px;
+}
+
+.zapatos {
+  background-color: burlywood;
+  padding: 3rem;
+}
+
+
+/* Inicia Modo lighten y darken */
+
+
+.zapato {
+  background-color: @colorFondoZapato;
+  color: @colorFuenteZapato;
+
+  & when (lightness(@colorFondoZapato) >= 50% ){
+    color: darken(@colorFuenteZapato, 30%);
+  }
+
+  & when (lightness(@colorFondoZapato) < 50%){
+    color: lighten(@colorFuenteZapato, 20%);
+    padding: 40px;
+  }
+}
+
+
+/*Finaliza modo lighten y darken*/
+
+
+/*Inicia creación de cols for each*/
+
+each(range(4), {
+  .col-@{value}{
+    height: (@value * 60px);
+    background-color: rgb(@value * 10 ,@value * 10 ,@value * 10 );
+  }
+});
+
+
+/*Finaliza creación de cols for each*/
+
+
+
+.suelaMixin(@backColor:yellow, @fontColor:@color1) {
+  background-color: @backColor;
+  font-size: 2rem;
+  color: @fontColor;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.suela {
+  .suelaMixin();
+}
+
+footer {
+  .zapato {
+    border: 4px + 10px solid orange;
+    margin: 2rem;
+
+    .cordones {
+      font-size: @size1;
+    }
+  }
+  .zapato1 .cordones .cordon2 {
+    background-color: red;
+  }
+  .zapato2 .cordones .cordon4 {
+    background-color: violet;
+  }
+
+  .suela {
+    &:hover {
+      border: 3px dashed black;
+      .suelaMixin( green , white);
+    }
+
+    &:after {
+      content: "After party";
+      .suelaMixin( green , white);
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+
+    .suelaMixin( pink , blue);
+  }
+
+}
